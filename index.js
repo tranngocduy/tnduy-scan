@@ -1,8 +1,6 @@
 var express = require('express');
 var app = express();
 
-server.listen(process.env.PORT || 3000);
-
 app.get('/', function (res, req) {
     req.send('Trang test scan QR code, nhưng không có gì ở đây hết :D ');
 })
@@ -14,3 +12,7 @@ app.get('/hr-qrcode', function (res, req) {
         console.log('error', error)
     }
 })
+
+var port = process.env.port || 3000;
+
+app.listen(port);
