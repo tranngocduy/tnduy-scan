@@ -7,10 +7,24 @@
 
     <script>
         (function () {
-            window.location = 'deeplink://home';
-            setTimeout(() => {
-                window.location = 'https://play.google.com/store/apps/details?id=com.aeoneshop';
-            }, 2000)
+            let resultAgent = 'unknown';
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if (/android/i.test(userAgent)) {
+                resultAgent = "Android";
+            }
+
+            // iOS detection from: http://stackoverflow.com/a/9039885/177710
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                resultAgent = "iOS";
+            }
+
+            alert(resultAgent)
+
+            // window.location = 'deeplink://home';
+            // setTimeout(() => {
+            //     window.location = 'https://play.google.com/store/apps/details?id=com.aeoneshop';
+            // }, 2000)
         })();
     </script>
 </head>
